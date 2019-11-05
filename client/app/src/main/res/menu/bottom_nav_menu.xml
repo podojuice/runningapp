@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/feed"
+        android:icon="@drawable/frag_feed"
+        android:title="@string/title_feed" />
+
+    <item
+        android:id="@+id/main"
+        android:icon="@drawable/frag_activity"
+        android:title="@string/title_activity" />
+
+    <item
+        android:id="@+id/running"
+        android:icon="@drawable/frag_running"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/club"
+        android:icon="@drawable/frag_club"
+        android:title="@string/title_club" />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/frag_profile"
+        android:title="프로필" />
+
+</menu>
