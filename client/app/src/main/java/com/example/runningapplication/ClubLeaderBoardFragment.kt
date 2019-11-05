@@ -63,7 +63,7 @@ class ClubLeaderBoardFragment : Fragment() {
         var settings: SharedPreferences = activity!!.getSharedPreferences("loginStatus", Context.MODE_PRIVATE)
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://70.12.247.54:8080")
+            .baseUrl("http://52.79.200.149:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

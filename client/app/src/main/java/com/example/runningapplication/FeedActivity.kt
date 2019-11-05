@@ -51,7 +51,7 @@ class FeedActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
         var settings: SharedPreferences = getSharedPreferences("loginStatus", Context.MODE_PRIVATE)
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://70.12.247.54:8080")
+            .baseUrl("http://52.79.200.149:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -61,9 +61,7 @@ class FeedActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
         server.findMyFriends(settings.getInt("uid", 0)).enqueue(object : Callback<List<FriendsRecord>> {
             override fun onResponse(call: Call<List<FriendsRecord>>, response: Response<List<FriendsRecord>>) {
                 if(response.code()==200){
-                    Toast.makeText(applicationContext, "키키", Toast.LENGTH_LONG).show()
                     var records: List<FriendsRecord>? = response.body()
-                    Toast.makeText(applicationContext, records!!.size.toString(), Toast.LENGTH_LONG).show()
                     for(record in records!!.iterator()) {
                         Log.d("saasgasfsa", record.userName.toString())
                         Log.d("saasgasfsa", record.userEmail.toString())
@@ -89,7 +87,6 @@ class FeedActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
                         feedList.addView(feeditem)
                     }
                 }else{
-                    Toast.makeText(applicationContext, response.code().toString()+" 무슨일이야", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -130,12 +127,10 @@ class FeedActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
                                             call: Call<Boolean>,
                                             response: Response<Boolean>
                                         ) {
-                                            Toast.makeText(applicationContext,response.body().toString(),Toast.LENGTH_LONG).show()
                                             d.dismiss()
                                         }
 
                                         override fun onFailure(call: Call<Boolean>, t: Throwable) {
-                                            Toast.makeText(applicationContext,"크헉",Toast.LENGTH_SHORT).show()
                                         }
                                     })
                                 }
@@ -148,7 +143,6 @@ class FeedActivity : AppCompatActivity() , BottomNavigationView.OnNavigationItem
 
                     override fun onFailure(call: Call<List<String>>, t: Throwable) {
                         Log.d("hi","hi")
-                        Toast.makeText(applicationContext, "hhhh", Toast.LENGTH_SHORT).show()
                     }
                 })
                 if(gd.friendList.layoutParams.height<pre){

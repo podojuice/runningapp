@@ -72,7 +72,7 @@ class MainRecordFragment : Fragment() {
         var settings: SharedPreferences = activity!!.getSharedPreferences("loginStatus", Context.MODE_PRIVATE)
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://70.12.247.54:8080")
+            .baseUrl("http://52.79.200.149:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -96,7 +96,7 @@ class MainRecordFragment : Fragment() {
 
                         var recorditem=inflater.inflate(R.layout.item_record,null)
                         recorditem.day.text=LocalDateTime.parse(running!!.endtime.toString()).toLocalDate().toString()
-                        recorditem.distance.text= running.distance.toString()
+                        recorditem.distance.text= "%.2f".format(running.distance)
                         recorditem.time.text=(if(hour<10) "0"+hour.toString() else hour.toString())+":"+ (if(minutes<10) "0"+minutes.toString() else minutes.toString()) + ":" +(if(seconds<10) "0"+seconds.toString() else seconds.toString())
                         sumkm += running.distance!!.toFloat()
                         cnt ++
@@ -132,7 +132,11 @@ class MainRecordFragment : Fragment() {
 
                     sumdistance.setText("%.2f".format(sumkm))
                     count.setText(cnt.toString())
-                    divide.setText("%.2f".format(sumkm/cnt))
+                    if(cnt == 0) {
+                        divide.setText("0.0")
+                    } else {
+                        divide.setText("%.2f".format(sumkm/cnt))
+                    }
                 }else{
                 }
             }

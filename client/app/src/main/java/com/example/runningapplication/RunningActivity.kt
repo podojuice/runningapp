@@ -104,7 +104,6 @@ class RunningActivity : AppCompatActivity() ,
                     var totalTime : Int = ((time[0] - '0') * 10 + (time[1] - '0')) * 60 + ((time[3] - '0') * 10 + (time[4] - '0'))
                     totalCal.setText(String.format("%.1fkcal", totalTime * 0.55))
                     totalVec.setText(String.format("%.2fm/s", dir / totalTime))
-                    // Toast.makeText(applicationContext, polyLineOptions.points[polyLineOptions.points.size-1].toString(), Toast.LENGTH_LONG).show()
                 } else {  // 일시정지 버튼 클릭시
                     if(polyLineOptions.points.size > 0) {
                     }
@@ -134,7 +133,7 @@ class RunningActivity : AppCompatActivity() ,
         parameters.put("userId",running1!!.userId!!)
         parameters.put("rid",running1!!.rid!!)
         parameters.put("starttime", running1!!.starttime!!)
-        parameters.put("distance", totalDir.text.toString().toDouble())
+        parameters.put("distance", dir)
         parameters.put("image", ret)
 
         server.endRunning(parameters).enqueue(object : Callback<Running> {
@@ -175,7 +174,7 @@ class RunningActivity : AppCompatActivity() ,
         runningMenu.selectedItemId = R.id.running
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://70.12.247.54:8080")
+            .baseUrl("http://52.79.200.149:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -184,6 +183,7 @@ class RunningActivity : AppCompatActivity() ,
 
         // 버튼 스톱워치
         start_btn.setOnClickListener {
+            dir = 0.0
             polyLineOptions = PolylineOptions().width(5f).color(Color.RED)
             chronometer2.base = SystemClock.elapsedRealtime() + stoptime
             chronometer2.start()

@@ -37,4 +37,7 @@ public interface UserService {
 
 	// 친구 랭킹
 	public List<TotalFriend> selectMyFriends(Integer uid);
+
+	// 이동거리 조회
+	public double distance(Integer uid);
 }

@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import com.example.runningapplication.data.model.Challenge
 import com.example.runningapplication.service.UserService
 import kotlinx.android.synthetic.main.fragment_club_challenge.view.*
-import kotlinx.android.synthetic.main.wpqkf.view.*
+import kotlinx.android.synthetic.main.custom_challenge.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -112,7 +112,7 @@ class ClubChallengeFragment : Fragment() {
         // Inflate the layout for this fragment
         var view =  inflater.inflate(R.layout.fragment_club_challenge, container, false)
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://70.12.247.54:8080")
+            .baseUrl("http://52.79.200.149:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -136,7 +136,7 @@ class ClubChallengeFragment : Fragment() {
                     challenge?.forEach {
                         var temp  : Challenge = it
 
-                        challengeItem=inflater.inflate(R.layout.wpqkf,null)
+                        challengeItem=inflater.inflate(R.layout.custom_challenge,null)
                         if(idx == 0){
                             challengeItem.setOnClickListener{
                                 val intent = Intent(activity, ClubChallengeWeeklyActivity::class.java)
@@ -208,7 +208,7 @@ class ClubChallengeFragment : Fragment() {
 //
 //                    Log.d("msg", temp.toString())
 //
-//                    challengeItem=inflater.inflate(R.layout.wpqkf,null)
+//                    challengeItem=inflater.inflate(R.layout.custom_challenge,null)
 //                    challengeItem.title.text=temp.name
 //                    challengeItem.content.text=temp.content
 //

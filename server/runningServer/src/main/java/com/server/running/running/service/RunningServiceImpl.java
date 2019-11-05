@@ -18,6 +18,7 @@ public class RunningServiceImpl implements RunningService {
 	// 러닝 시작
 	@Override
 	public Running start(Running running) {
+		running.setDistance(0.0);
 		runningRepository.save(running);
 		return running;
 	}

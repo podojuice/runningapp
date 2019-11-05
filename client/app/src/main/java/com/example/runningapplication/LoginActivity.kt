@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         var editor: SharedPreferences.Editor = settings.edit()
 
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://70.12.247.54:8080")
+            .baseUrl("http://52.79.200.149:8080")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val loginIntent = Intent(this, RunningActivity::class.java)
@@ -41,8 +41,8 @@ class LoginActivity : AppCompatActivity() {
             server.login(parameters).enqueue(object : Callback<User>{
                 override fun onResponse(call: Call<User>, response: Response<User>) {
                     if(response.code()==200){
-                        Toast.makeText(applicationContext, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                         if(response.body()?.uid.equals("0")) {
+                            Toast.makeText(applicationContext, "아이디나 비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show()
                         } else {
                             var user:User? = response.body()
 

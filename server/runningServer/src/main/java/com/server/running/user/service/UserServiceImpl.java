@@ -171,4 +171,19 @@ public class UserServiceImpl implements UserService {
 		Collections.sort(list);
 		return list;
 	}
+
+	// 이동 거리 조회
+	@Override
+	public double distance(Integer uid) {
+		Optional<User> maybeUser = userRepository.findById(uid);
+		double dir = 0;
+		if(maybeUser.isPresent()) {
+			User user = maybeUser.get();
+			for (Running running : user.getRunningData()) {
+				if(running.getDistance() == null) continue;
+				dir += running.getDistance();
+			}
+		}
+		return dir;
+	}
 }

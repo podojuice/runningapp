@@ -106,4 +106,11 @@ public class UserController {
 	public ResponseEntity<List<TotalFriend>> selectMyFriends(@RequestParam Integer uid) {
 		return new ResponseEntity<List<TotalFriend>>(userService.selectMyFriends(uid), HttpStatus.OK);
 	}
+	
+	// 해당 유저의 총 거리 조회
+	@GetMapping("/distance.run")
+	public ResponseEntity<Double> distance(@RequestParam Integer uid) {
+		log.debug("이동 거리 조회");
+		return new ResponseEntity<Double>(userService.distance(uid), HttpStatus.OK);
+	}
 }
